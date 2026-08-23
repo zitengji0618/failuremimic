@@ -1,2 +1,12 @@
 .DS_store
 .idea
+
+# Full-length demo video: hosted on YouTube, too large for GitHub (100 MB file limit).
+static/videos/sparta_demo.mp4
+
+# Paper PDFs: keep local, never publish.
+*.pdf
+
+# Agent guidance files: local only.
+CLAUDE.md
+AGENTS.md

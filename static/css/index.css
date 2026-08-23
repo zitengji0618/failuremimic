@@ -13,6 +13,17 @@ body {
     margin-bottom: 5px;
 }
 
+/* Buttons for links that do not exist yet (Paper, arXiv). Visible but inert:
+   no href, so nothing is clickable. Remove this class once the href is set. */
+.link-pending {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.link-pending:hover {
+  opacity: 0.55;
+}
+
 .dnerf {
   font-variant: small-caps;
 }
@@ -107,6 +118,11 @@ body {
     height: 100%;
 }
 
+/* Demo video sits above the abstract; give it room before the heading. */
+.demo-video-row {
+  margin-bottom: 2.5rem !important;
+}
+
 .publication-body img {
 }
 
@@ -125,6 +141,95 @@ body {
 
 .results-carousel video {
   margin: 0;
+}
+
+.regular-tracking-row {
+  display: grid;
+  gap: 10px;
+}
+
+.regular-tracking-row-primary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.regular-tracking-secondary-carousel {
+  margin-top: 0;
+}
+
+.regular-tracking-subtitle {
+  margin-bottom: 2rem !important;
+}
+
+.regular-tracking-secondary-title {
+  margin-top: 2.5rem;
+}
+
+.tracking-section-title {
+  margin-top: 2.5rem;
+}
+
+.damping-tracking-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lock-tracking-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regular-tracking-row .item {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  font-size: 0;
+}
+
+.regular-tracking-row video {
+  display: block;
+  width: 100%;
+}
+
+.tracking-video-caption {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .regular-tracking-row-primary,
+  .damping-tracking-row,
+  .lock-tracking-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-video-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+}
+
+.demo-video-card video {
+  display: block;
+  width: 100%;
+}
+
+.demo-video-card p {
+  padding: 0.75rem;
+  font-weight: 600;
+}
+
+.loco-manipulation-title {
+  margin-bottom: 2.5rem !important;
+}
+
+.loco-manipulation-subsection {
+  margin-top: 2rem;
+}
+
+.stitched-motion-tracking-title {
+  margin-bottom: 2.5rem !important;
 }
 
 
