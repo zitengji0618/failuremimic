@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Part-Aware Latent Adaptation for Robust Sparse-Command Humanoid Motion Tracking.">
-  <meta name="keywords" content="humanoid motion tracking, sparse commands, latent adaptation">
+        content="SPARTA organizes humanoid motion tracking around body parts, so a policy can re-route load across the trunk and intact limbs when an actuator fails.">
+  <meta name="keywords" content="humanoid motion tracking, actuator failure, fault tolerance, sparse commands, latent motion prior">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Robust Humanoid Motion Tracking</title>
+  <title>SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -46,7 +46,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Robust Humanoid Motion Tracking</h1>
+          <h1 class="title is-1 publication-title">SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://zitengji0618.github.io/academicpage/">Ziteng Ji</a>,</span>
             <span class="author-block"><a href="https://chuye03.github.io/">Chuye Hong</a><sup>*</sup>,</span>
@@ -86,7 +86,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=WDqDSfFBcrs"
+                <a href="https://www.youtube.com/watch?v=cSsyp2lHbxI"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -132,7 +132,7 @@
     <div class="columns is-centered demo-video-row">
       <div class="column is-four-fifths">
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/WDqDSfFBcrs?rel=0"
+          <iframe src="https://www.youtube.com/embed/cSsyp2lHbxI?rel=0"
                   title="SPARTA overview video"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -147,23 +147,29 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Humanoid motion-tracking policies are typically trained to follow dense whole-body
-            references under nominal actuation, yet at deployment the command is often sparse and
-            the hardware imperfect. We present SPARTA (Sparse Part-Aware Residual Transformer
-            Adaptation), a three-stage framework that tracks sparse five-point commands, covering
-            only the torso, wrists, and ankles, and remains robust when actuation degrades. A
-            whole-body tracking expert is first distilled into a part-wise latent motion prior, a
-            conditional variational autoencoder whose decoder factorizes across five body-part
-            groups and whose state-conditioned prior needs no reference motion at deployment. A
-            residual tracking policy then adapts this frozen prior: a body-part Transformer maps
-            the command and proprioception to latent residuals through explicit cross-part
-            attention, shifting the prior toward the commanded motion while the decoder remains
-            fixed. Commands are expressed relative to the reference anchor, so tracking requires no
-            absolute position or heading estimate. In simulation on a Unitree G1, SPARTA tracks
-            novel combinations of upper- and lower-body motions unseen during training, and when
-            one leg is passively weakened it re-routes load across body parts to survive external
-            pushes, outperforming monolithic and non-part-aware baselines with a margin that grows
-            with impairment severity and persists at severities never encountered in training.
+            Humanoid motion-tracking policies are trained under the assumption that every actuator
+            behaves as it did during training, yet actuators weaken and fail over a robot's service
+            life. When a joint can no longer bear its commanded load, tracking becomes a cross-body
+            reallocation problem: the lost support must be re-routed through the trunk and the
+            intact limbs, a coordination pattern that a monolithic policy, producing every output
+            from a single shared representation with no notion of body parts, is not organized to
+            express. We present SPARTA (Sparse Part-Aware Residual Transformer Adaptation), a
+            framework that organizes humanoid motion tracking around body parts so that such
+            compensation becomes expressible. A whole-body tracking expert is distilled into a
+            part-wise latent motion prior whose decoder factorizes across five body-part groups and
+            whose state-conditioned prior needs no reference motion at deployment; a residual policy
+            then adapts the frozen prior, with a body-part Transformer mapping proprioception and
+            the command to per-part latent residuals through explicit cross-part attention. Commands
+            enter through a sparse five-point interface covering the torso, wrists, and ankles,
+            expressed relative to the reference anchor, so deployment requires no estimate of
+            absolute position or heading. In simulation on a Unitree G1, with one leg passively
+            weakened and the policy given no indication of which joints are impaired, SPARTA
+            sustains fall-free survival under systematic pushes, outperforming monolithic and
+            non-part-aware baselines by a margin that grows with impairment severity and persists at
+            severities never encountered in training; the same part-aware structure also tracks
+            novel combinations of upper- and lower-body motions unseen during training. On the
+            physical robot, the policy autonomously performs loco-manipulation tasks with an
+            upper/lower body joint rendered passive and tracks stitched motion combinations.
           </p>
         </div>
       </div>
@@ -417,7 +423,7 @@
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{ji2027sparta,
   author    = {Ji, Ziteng and Hong, Chuye and Shao, Yiyang and Sreenath, Koushil},
-  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Robust Humanoid Motion Tracking},
+  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure},
   journal   = {In-submission},
   year      = {2027},
 }</code></pre>

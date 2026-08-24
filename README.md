@@ -1,14 +1,15 @@
 # SPARTA
 
-Project website for **SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Robust Humanoid
-Motion Tracking**.
+Project website for **SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion
+Tracking under Actuator Failure**.
 
-A humanoid motion-tracking framework that follows sparse five-point commands (torso, wrists, ankles)
-and stays robust when actuation degrades. A whole-body tracking expert is distilled into a part-wise
-latent motion prior, and a body-part Transformer then adapts that frozen prior through cross-part
-attention.
+A humanoid motion-tracking framework organized around body parts, so that when an actuator fails the
+policy can re-route the lost support through the trunk and the intact limbs. A whole-body tracking
+expert is distilled into a part-wise latent motion prior, and a body-part Transformer then adapts
+that frozen prior through explicit cross-part attention. Commands enter through a sparse five-point
+interface covering the torso, wrists, and ankles.
 
-📺 [Overview video](https://www.youtube.com/watch?v=WDqDSfFBcrs)
+📺 [Overview video](https://www.youtube.com/watch?v=cSsyp2lHbxI)
 
 ## Develop
 
@@ -37,7 +38,7 @@ The full-length demo video is hosted on YouTube rather than committed, since it 
 ```
 @article{ji2027sparta,
   author    = {Ji, Ziteng and Hong, Chuye and Shao, Yiyang and Sreenath, Koushil},
-  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Robust Humanoid Motion Tracking},
+  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure},
   journal   = {In-submission},
   year      = {2027},
 }
