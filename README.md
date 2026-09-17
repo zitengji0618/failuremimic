@@ -1,15 +1,16 @@
-# SPARTA
+# FailureMimic
 
-Project website for **SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion
-Tracking under Actuator Failure**.
+Project website for **FailureMimic: Humanoid Motion Tracking under Actuator Failure via Part-Wise
+Latent Residuals**.
 
-A humanoid motion-tracking framework organized around body parts, so that when an actuator fails the
-policy can re-route the lost support through the trunk and the intact limbs. A whole-body tracking
-expert is distilled into a part-wise latent motion prior, and a body-part Transformer then adapts
-that frozen prior through explicit cross-part attention. Commands enter through a sparse five-point
-interface covering the torso, wrists, and ankles.
+A humanoid motion-tracking framework organized around body parts, so that when an actuator weakens
+or fails the intact parts can compensate. A whole-body tracking policy is distilled into a part-wise
+latent motion model, which is then frozen while a residual policy coordinates across body parts
+through explicit cross-part attention. The residual policy is never told which joints are impaired.
+The same partition serves the opposite demand: because body parts stay separable, the policy also
+tracks novel combinations of upper- and lower-body motions.
 
-📺 [Overview video](https://www.youtube.com/watch?v=cSsyp2lHbxI)
+📺 [Overview video](https://www.youtube.com/watch?v=rXwZRG9S-FE)
 
 ## Develop
 
@@ -36,9 +37,9 @@ The full-length demo video is hosted on YouTube rather than committed, since it 
 ## Citation
 
 ```
-@article{ji2027sparta,
+@article{ji2027failuremimic,
   author    = {Ji, Ziteng and Hong, Chuye and Shao, Yiyang and Sreenath, Koushil},
-  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure},
+  title     = {{FailureMimic}: Humanoid Motion Tracking under Actuator Failure via Part-Wise Latent Residuals},
   journal   = {In-submission},
   year      = {2027},
 }

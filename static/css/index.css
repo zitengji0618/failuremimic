@@ -123,6 +123,11 @@ body {
   margin-bottom: 2.5rem !important;
 }
 
+/* Separate the stacked method figures so their captions do not run together. */
+.method-figure-row {
+  margin-top: 2.5rem !important;
+}
+
 .publication-body img {
 }
 

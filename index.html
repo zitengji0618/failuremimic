@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="SPARTA organizes humanoid motion tracking around body parts, so a policy can re-route load across the trunk and intact limbs when an actuator fails.">
-  <meta name="keywords" content="humanoid motion tracking, actuator failure, fault tolerance, sparse commands, latent motion prior">
+        content="FailureMimic organizes humanoid motion tracking around body parts, so intact parts can compensate when an actuator weakens or fails.">
+  <meta name="keywords" content="humanoid motion tracking, actuator failure, fault tolerance, part-wise latent residuals, latent motion prior">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure</title>
+  <title>FailureMimic: Humanoid Motion Tracking under Actuator Failure via Part-Wise Latent Residuals</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -46,7 +46,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SPARTA: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure</h1>
+          <h1 class="title is-1 publication-title">FailureMimic: Humanoid Motion Tracking under Actuator Failure via Part-Wise Latent Residuals</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://zitengji0618.github.io/academicpage/">Ziteng Ji</a>,</span>
             <span class="author-block"><a href="https://chuye03.github.io/">Chuye Hong</a><sup>*</sup>,</span>
@@ -86,7 +86,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=cSsyp2lHbxI"
+                <a href="https://www.youtube.com/watch?v=rXwZRG9S-FE"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -132,8 +132,8 @@
     <div class="columns is-centered demo-video-row">
       <div class="column is-four-fifths">
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/cSsyp2lHbxI?rel=0"
-                  title="SPARTA overview video"
+          <iframe src="https://www.youtube.com/embed/rXwZRG9S-FE?rel=0"
+                  title="FailureMimic overview video"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen></iframe>
@@ -147,49 +147,63 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Humanoid motion-tracking policies are trained under the assumption that every actuator
-            behaves as it did during training, yet actuators weaken and fail over a robot's service
-            life. When a joint can no longer bear its commanded load, tracking becomes a cross-body
-            reallocation problem: the lost support must be re-routed through the trunk and the
-            intact limbs, a coordination pattern that a monolithic policy, producing every output
-            from a single shared representation with no notion of body parts, is not organized to
-            express. We present SPARTA (Sparse Part-Aware Residual Transformer Adaptation), a
-            framework that organizes humanoid motion tracking around body parts so that such
-            compensation becomes expressible. A whole-body tracking expert is distilled into a
-            part-wise latent motion prior whose decoder factorizes across five body-part groups and
-            whose state-conditioned prior needs no reference motion at deployment; a residual policy
-            then adapts the frozen prior, with a body-part Transformer mapping proprioception and
-            the command to per-part latent residuals through explicit cross-part attention. Commands
-            enter through a sparse five-point interface covering the torso, wrists, and ankles,
-            expressed relative to the reference anchor, so deployment requires no estimate of
-            absolute position or heading. In simulation on a Unitree G1, with one leg passively
-            weakened and the policy given no indication of which joints are impaired, SPARTA
-            sustains fall-free survival under systematic pushes, outperforming monolithic and
-            non-part-aware baselines by a margin that grows with impairment severity and persists at
-            severities never encountered in training; the same part-aware structure also tracks
-            novel combinations of upper- and lower-body motions unseen during training. On the
-            physical robot, the policy autonomously performs loco-manipulation tasks with an
-            upper/lower body joint rendered passive and tracks stitched motion combinations.
+            Humanoid motion-tracking policies are typically developed under nominal actuation, yet
+            actuators can weaken or fail over a robot's service life. A local actuator impairment
+            can affect whole-body tracking and require coordinated compensation from intact body
+            parts. We therefore ask whether organizing the control representation around body parts
+            provides a useful inductive bias for fault-tolerant tracking. We present FailureMimic, a
+            framework that distills a whole-body tracking policy into a part-wise latent motion
+            model and adapts the frozen model with a residual policy that coordinates across body
+            parts. The residual policy is not given the identity of the impaired joints. In
+            simulation on a Unitree G1, FailureMimic achieves higher fall-free survival than
+            monolithic and non-part-aware baselines under passive leg impairments and systematic
+            pushes; its margin grows with impairment severity and persists at severities not
+            encountered during training. The same structure also serves the opposite demand: because
+            body parts stay separable, it tracks novel combinations of upper- and lower-body
+            motions. On the physical G1, FailureMimic autonomously performs loco-manipulation with
+            passive or locked joints and tracks stitched motions.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Method overview figure. -->
+    <!-- Method figures. -->
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <figure class="image">
-          <img src="./static/images/sparta_overview.png"
-               style="max-width: 720px; width: 100%; margin: 0 auto;"
-               alt="SPARTA overview: a three-stage framework — Stage 1 distills a whole-body tracking expert, Stage 2 learns a part-wise latent motion prior with a five-branch decoder, and Stage 3 adds a body-part Transformer for sparse five-point residual tracking.">
+          <img src="./static/images/failuremimic_fig2_overview.png"
+               style="max-width: 900px; width: 100%; margin: 0 auto;"
+               alt="Overview of the three stages: a whole-body expert tracks reference motions and emits joint-position targets; the expert is distilled into a part-wise latent prior aligned with a training-time posterior; the prior and decoder are then frozen while a body-part Transformer maps the state and the sparse five-point command to a latent residual.">
         </figure>
         <p class="has-text-centered is-size-6 mt-3">
-          Overview of SPARTA. Stage 2 learns a five-part latent prior; Stage 3 keeps the same
-          five-part structure and adds cross-part Transformer attention.
+          <b>Overview of the three stages.</b> Stage 1: a whole-body expert tracks reference motions
+          <i>g</i>, emitting joint-position targets. Stage 2: the expert is distilled into a
+          part-wise latent prior <i>p</i>(<i>z</i>&nbsp;|&nbsp;<i>s</i>), aligned by a divergence
+          term with a training-time posterior. Stage 3: the prior and decoder are frozen, and a
+          body-part Transformer maps the state and the sparse five-point command to a residual.
+          Colors mark the five trunk&ndash;limb groups.
         </p>
       </div>
     </div>
-    <!--/ Method overview figure. -->
+
+    <div class="columns is-centered method-figure-row">
+      <div class="column is-four-fifths">
+        <figure class="image">
+          <img src="./static/images/failuremimic_fig3_architecture.png"
+               style="max-width: 680px; width: 100%; margin: 0 auto;"
+               alt="Part-wise architecture: the sparse five-point command, proprioceptive state, and attitude signals are tokenized by body part into five tokens; a Transformer encoder mixes them by multi-head self-attention, and zero-initialized per-part heads emit a latent residual that shifts the frozen prior mean before each slice is decoded by its own branch.">
+        </figure>
+        <p class="has-text-centered is-size-6 mt-3">
+          <b>Part-wise architecture.</b> The command, proprioceptive state, and attitude signals are
+          tokenized by body part into five tokens; a Transformer encoder mixes them by
+          self-attention, and zero-initialized per-part heads emit the latent residual. The residual
+          shifts the frozen prior mean, and each latent slice is decoded by an independent branch
+          driving only its own group's joints. Snowflakes mark frozen modules; the bolt marks the
+          trained residual generator.
+        </p>
+      </div>
+    </div>
+    <!--/ Method figures. -->
   </div>
 </section>
 <!-- End abstract. -->
@@ -421,9 +435,9 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{ji2027sparta,
+    <pre><code>@article{ji2027failuremimic,
   author    = {Ji, Ziteng and Hong, Chuye and Shao, Yiyang and Sreenath, Koushil},
-  title     = {{SPARTA}: Sparse Part-Aware Residual Transformer Adaptation for Humanoid Motion Tracking under Actuator Failure},
+  title     = {{FailureMimic}: Humanoid Motion Tracking under Actuator Failure via Part-Wise Latent Residuals},
   journal   = {In-submission},
   year      = {2027},
 }</code></pre>
