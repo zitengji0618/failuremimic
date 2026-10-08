@@ -10,3 +10,6 @@ static/videos/sparta_demo.mp4
 # Agent guidance files: local only.
 CLAUDE.md
 AGENTS.md
+
+# Screenshots dropped into the repo folder.
+Screenshot*.png
