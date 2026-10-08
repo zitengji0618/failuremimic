@@ -65,7 +65,9 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -74,17 +76,39 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=43">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script src="./static/js/index.js?v=17"></script>
+  <script defer src="./static/js/charts.js?v=2"></script>
+  <script type="importmap">
+  {"imports":{
+    "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+  </script>
+  <script type="module" src="./static/js/g1.js?v=16"></script>
 </head>
 <body>
 
-<section class="hero">
+<nav id="sectionnav" aria-label="Sections">
+  <div class="sectionnav-inner">
+    <a class="sectionnav-brand" href="#top">FailureMimic</a>
+    <div class="sectionnav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#joints">Joints</a>
+      <a href="#loco">Loco-manipulation</a>
+      <a href="#stitched">Stitched</a>
+      <a href="#tracking">Tracking</a>
+      <a href="#results">Results</a>
+      <a href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -169,10 +193,10 @@
 
 
 <!-- Abstract. -->
-<section class="section">
+<section class="section" id="abstract">
   <div class="container is-max-desktop">
     <!-- Demo video. -->
-    <div class="columns is-centered demo-video-row">
+    <div class="columns is-centered demo-video-row reveal">
       <div class="column is-four-fifths">
         <div class="publication-video">
           <iframe src="https://www.youtube.com/embed/rXwZRG9S-FE?rel=0"
@@ -185,7 +209,7 @@
     </div>
     <!--/ Demo video. -->
 
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered reveal">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
@@ -211,12 +235,166 @@
     </div>
 
     <!-- Method figures. -->
-    <div class="columns is-centered">
+    <div class="columns is-centered reveal">
       <div class="column is-four-fifths">
         <figure class="image">
-          <img src="./static/images/failuremimic_fig2_overview.png"
-               style="max-width: 900px; width: 100%; margin: 0 auto;"
-               alt="Overview of the three stages: a whole-body expert tracks reference motions and emits joint-position targets; the expert is distilled into a part-wise latent prior aligned with a training-time posterior; the prior and decoder are then frozen while a body-part Transformer maps the state and the sparse five-point command to a latent residual.">
+          <div class="ovw" style="max-width: 940px; margin: 0 auto;">
+        <svg class="ovw-svg" viewBox="0 0 1000 510" role="img"
+             aria-label="Overview of the three stages of FailureMimic">
+    <defs>
+      <marker id="ovw-ah" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0.5,1 L9,5 L0.5,9 Z" fill="context-stroke"/>
+      </marker>
+    </defs>
+    <g class="ovw-arrows">
+      <path class="ovw-arrow" d="M178,82 L224,82" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M370,82 L416,82" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow ovw-dash" d="M553,82 L624,82" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M190,248 L238,248" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M434,248 L476,248" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M518,248 L564,248" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M760,248 L806,248" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow" d="M714,128 L714,150 L500,150 L500,228" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow ovw-soft" d="M856,330 L856,356"/>
+      <path class="ovw-arrow ovw-soft" d="M856,356 L940,356 L940,82 L806,82" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow ovw-soft" d="M856,356 L338,356 L338,304" marker-end="url(#ovw-ah)"/>
+      <path class="ovw-arrow ovw-soft" d="M664,356 L664,304" marker-end="url(#ovw-ah)"/>
+      <text class="ovw-sym" x="201" y="74">g</text>
+      <text class="ovw-sym" x="393" y="74">a<tspan font-size="10" dy="-6">E</tspan></text>
+      <text class="ovw-sym ovw-sym-sm" x="588" y="72">distill</text>
+      <text class="ovw-sym" x="455" y="240">z&#771;</text>
+      <text class="ovw-sym" x="541" y="240">z</text>
+      <text class="ovw-sym" x="783" y="240">a</text>
+      <text class="ovw-sym" x="474" y="176">&#956;&#8346;</text>
+      <text class="ovw-sym" x="955" y="196">s</text>
+    </g>
+    <g class="ovw-block is-data" data-tip="Full-body reference motions the expert is trained to track." tabindex="0" role="button">
+      <rect x="36" y="36" width="142" height="92" rx="9"/>
+      <text class="ovw-label" x="107.0" y="23">Reference motions</text>
+    </g>
+    <g class="ovw-block is-net" data-tip="Stage 1. A whole-body tracking expert, trained with RL to follow the reference. It emits joint-position targets." tabindex="0" role="button">
+      <rect x="230" y="36" width="140" height="92" rx="9"/>
+      <circle class="ovw-badge" cx="300.0" cy="16" r="13"/>
+      <text class="ovw-badge-t" x="300.0" y="21">1</text>
+    </g>
+    <g class="ovw-block is-data" data-tip="An on-policy batch of student states, relabelled with the expert&rsquo;s actions." tabindex="0" role="button">
+      <rect x="420" y="36" width="133" height="92" rx="9"/>
+      <text class="ovw-label" x="486.5" y="23">On-policy batch</text>
+    </g>
+    <g class="ovw-block is-net" data-tip="Stage 2. The expert is distilled into a part-wise latent prior p(z|s), aligned by a divergence term with a training-time posterior. Frozen from here on." tabindex="0" role="button">
+      <rect x="628" y="36" width="172" height="92" rx="9"/>
+      <circle class="ovw-badge" cx="657.0" cy="16" r="13"/>
+      <text class="ovw-badge-t" x="657.0" y="21">2</text>
+      <text class="ovw-snow" x="690.0" y="21">&#10052;</text>
+      <text class="ovw-label is-inline" x="710.0" y="22">p(z | s)</text>
+    </g>
+    <g class="ovw-block is-data" data-tip="The sparse five-point command: torso, both wrists, both ankles. Expressed relative to the reference anchor, so no absolute position or heading is needed." tabindex="0" role="button">
+      <rect x="36" y="198" width="154" height="102" rx="9"/>
+      <text class="ovw-label" x="113.0" y="185">Five-point command</text>
+    </g>
+    <g class="ovw-block is-net" data-tip="Stage 3. One token per body part. Cross-part attention is the only channel through which the parts exchange information, which is what compensation requires." tabindex="0" role="button">
+      <rect x="242" y="196" width="192" height="104" rx="9"/>
+      <circle class="ovw-badge" cx="338.0" cy="176" r="13"/>
+      <text class="ovw-badge-t" x="338.0" y="181">3</text>
+    </g>
+    <g class="ovw-block is-net" data-tip="Five independent decoder branches, one per body part. Frozen, so each drives only its own group&rsquo;s joints." tabindex="0" role="button">
+      <rect x="568" y="198" width="192" height="102" rx="9"/>
+      <circle class="ovw-badge" cx="635.0" cy="178" r="13"/>
+      <text class="ovw-badge-t" x="635.0" y="183">2</text>
+      <text class="ovw-snow" x="668.0" y="183">&#10052;</text>
+      <text class="ovw-label is-inline" x="688.0" y="184">D</text>
+    </g>
+    <g class="ovw-art">
+      
+      <circle class="ovw-node" cx="258" cy="62" r="5"/><circle class="ovw-node" cx="258" cy="82" r="5"/><circle class="ovw-node" cx="258" cy="102" r="5"/><line class="ovw-edge" x1="263" y1="62" x2="295" y2="52"/><line class="ovw-edge" x1="263" y1="62" x2="295" y2="72"/><line class="ovw-edge" x1="263" y1="62" x2="295" y2="92"/><line class="ovw-edge" x1="263" y1="62" x2="295" y2="112"/><line class="ovw-edge" x1="263" y1="82" x2="295" y2="52"/><line class="ovw-edge" x1="263" y1="82" x2="295" y2="72"/><line class="ovw-edge" x1="263" y1="82" x2="295" y2="92"/><line class="ovw-edge" x1="263" y1="82" x2="295" y2="112"/><line class="ovw-edge" x1="263" y1="102" x2="295" y2="52"/><line class="ovw-edge" x1="263" y1="102" x2="295" y2="72"/><line class="ovw-edge" x1="263" y1="102" x2="295" y2="92"/><line class="ovw-edge" x1="263" y1="102" x2="295" y2="112"/><circle class="ovw-node" cx="300" cy="52" r="5"/><circle class="ovw-node" cx="300" cy="72" r="5"/><circle class="ovw-node" cx="300" cy="92" r="5"/><circle class="ovw-node" cx="300" cy="112" r="5"/><line class="ovw-edge" x1="305" y1="52" x2="337" y2="62"/><line class="ovw-edge" x1="305" y1="52" x2="337" y2="82"/><line class="ovw-edge" x1="305" y1="52" x2="337" y2="102"/><line class="ovw-edge" x1="305" y1="72" x2="337" y2="62"/><line class="ovw-edge" x1="305" y1="72" x2="337" y2="82"/><line class="ovw-edge" x1="305" y1="72" x2="337" y2="102"/><line class="ovw-edge" x1="305" y1="92" x2="337" y2="62"/><line class="ovw-edge" x1="305" y1="92" x2="337" y2="82"/><line class="ovw-edge" x1="305" y1="92" x2="337" y2="102"/><line class="ovw-edge" x1="305" y1="112" x2="337" y2="62"/><line class="ovw-edge" x1="305" y1="112" x2="337" y2="82"/><line class="ovw-edge" x1="305" y1="112" x2="337" y2="102"/><circle class="ovw-node" cx="342" cy="62" r="5"/><circle class="ovw-node" cx="342" cy="82" r="5"/><circle class="ovw-node" cx="342" cy="102" r="5"/>
+      <rect class="ovw-card" x="436" y="44" width="74" height="52" rx="6"/><rect class="ovw-card" x="445" y="52" width="74" height="52" rx="6"/><rect class="ovw-card" x="454" y="60" width="74" height="52" rx="6"/><rect class="ovw-card" x="463" y="68" width="74" height="52" rx="6"/>
+      <line class="ovw-axis" x1="642" y1="116" x2="788" y2="116"/><path class="ovw-curve is-q" d="M642.0,109.0 L644.4,107.6 L646.9,105.9 L649.3,104.1 L651.7,102.1 L654.2,99.9 L656.6,97.5 L659.0,94.9 L661.5,92.2 L663.9,89.4 L666.3,86.5 L668.8,83.5 L671.2,80.6 L673.6,77.7 L676.1,75.0 L678.5,72.5 L680.9,70.2 L683.4,68.2 L685.8,66.5 L688.2,65.3 L690.7,64.4 L693.1,64.0 L695.5,64.1 L698.0,64.6 L700.4,65.6 L702.8,66.9 L705.3,68.7 L707.7,70.7 L710.1,73.1 L712.6,75.7 L715.0,78.5 L717.4,81.4 L719.9,84.3 L722.3,87.2 L724.7,90.1 L727.2,93.0 L729.6,95.6 L732.0,98.2 L734.5,100.5 L736.9,102.7 L739.3,104.6 L741.8,106.4 L744.2,107.9 L746.6,109.3 L749.1,110.5 L751.5,111.5 L753.9,112.4 L756.4,113.1 L758.8,113.7 L761.2,114.2 L763.7,114.6 L766.1,114.9 L768.5,115.1 L771.0,115.3 L773.4,115.5 L775.8,115.6 L778.3,115.7 L780.7,115.8 L783.1,115.9 L785.6,115.9 L788.0,115.9"/><path class="ovw-curve is-p" d="M642.0,116.0 L644.4,116.0 L646.9,116.0 L649.3,116.0 L651.7,116.0 L654.2,116.0 L656.6,116.0 L659.0,116.0 L661.5,116.0 L663.9,116.0 L666.3,116.0 L668.8,116.0 L671.2,116.0 L673.6,116.0 L676.1,115.9 L678.5,115.9 L680.9,115.9 L683.4,115.8 L685.8,115.6 L688.2,115.4 L690.7,115.1 L693.1,114.7 L695.5,114.0 L698.0,113.2 L700.4,112.0 L702.8,110.5 L705.3,108.6 L707.7,106.1 L710.1,103.2 L712.6,99.7 L715.0,95.7 L717.4,91.1 L719.9,86.2 L722.3,81.1 L724.7,75.9 L727.2,70.9 L729.6,66.2 L732.0,62.2 L734.5,59.1 L736.9,57.0 L739.3,56.0 L741.8,56.3 L744.2,57.8 L746.6,60.4 L749.1,64.0 L751.5,68.3 L753.9,73.1 L756.4,78.3 L758.8,83.4 L761.2,88.5 L763.7,93.2 L766.1,97.5 L768.5,101.3 L771.0,104.6 L773.4,107.3 L775.8,109.5 L778.3,111.2 L780.7,112.6 L783.1,113.6 L785.6,114.3 L788.0,114.9"/><text class="ovw-curve-t is-q" x="668" y="70">q</text><text class="ovw-curve-t is-p" x="768" y="66">p</text>
+      
+    </g>
+    <g class="ovw-inner">
+      <rect class="ovw-row" x="256" y="208" width="164" height="24" rx="5"/>
+      <text class="ovw-row-t" x="338" y="224">FFN</text>
+      <rect class="ovw-row is-hi" x="256" y="238" width="164" height="24" rx="5"/>
+      <text class="ovw-row-t is-hi" x="338" y="254">Cross-part attention</text>
+      <rect class="ovw-row" x="256" y="268" width="164" height="24" rx="5"/>
+      <text class="ovw-row-t" x="338" y="284">QKV</text>
+      <rect class="ovw-bar" x="582" y="206" width="164" height="13" rx="3" fill="#4a7fb5"/>
+      <rect class="ovw-bar" x="582" y="223" width="164" height="13" rx="3" fill="#e8943a"/>
+      <rect class="ovw-bar" x="582" y="240" width="164" height="13" rx="3" fill="#b98bbd"/>
+      <rect class="ovw-bar" x="582" y="257" width="164" height="13" rx="3" fill="#5eb562"/>
+      <rect class="ovw-bar" x="582" y="274" width="164" height="13" rx="3" fill="#e8696b"/>
+    </g>
+    <g class="ovw-block ovw-plus" data-tip="The residual shifts the frozen prior&rsquo;s mean: z = &#956;&#8346;(s) + z&#771;." tabindex="0" role="button">
+      <circle cx="497" cy="248" r="18"/>
+      <path d="M489,248 H505 M497,240 V256"/>
+    </g>
+    <g class="ovw-flow">
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M178,82 L224,82');--dur:1.1s;--delay:0.00s"/>
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M178,82 L224,82');--dur:1.1s;--delay:0.55s"/>
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M370,82 L416,82');--dur:1.1s;--delay:0.00s"/>
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M370,82 L416,82');--dur:1.1s;--delay:0.55s"/>
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M553,82 L624,82');--dur:1.4s;--delay:0.00s"/>
+      <circle class="flow-dot flow-train" r="4" style="--p:path('M553,82 L624,82');--dur:1.4s;--delay:0.70s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M190,248 L238,248');--dur:1.1s;--delay:0.00s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M190,248 L238,248');--dur:1.1s;--delay:0.55s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M434,248 L476,248');--dur:1.0s;--delay:0.00s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M434,248 L476,248');--dur:1.0s;--delay:0.50s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M518,248 L564,248');--dur:1.0s;--delay:0.00s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M518,248 L564,248');--dur:1.0s;--delay:0.50s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M760,248 L806,248');--dur:1.1s;--delay:0.00s"/>
+      <circle class="flow-dot flow-cmd" r="4" style="--p:path('M760,248 L806,248');--dur:1.1s;--delay:0.55s"/>
+      <circle class="flow-dot flow-prior" r="4" style="--p:path('M714,128 L714,150 L500,150 L500,228');--dur:1.8s;--delay:0.00s"/>
+      <circle class="flow-dot flow-prior" r="4" style="--p:path('M714,128 L714,150 L500,150 L500,228');--dur:1.8s;--delay:0.90s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L940,356 L940,82 L806,82');--dur:3.0s;--delay:0.00s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L940,356 L940,82 L806,82');--dur:3.0s;--delay:1.50s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L338,356 L338,304');--dur:2.6s;--delay:0.00s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L338,356 L338,304');--dur:2.6s;--delay:1.30s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L664,356 L664,304');--dur:1.9s;--delay:0.00s"/>
+      <circle class="flow-dot flow-state" r="4" style="--p:path('M856,356 L664,356 L664,304');--dur:1.9s;--delay:0.95s"/>
+    </g>
+    <g class="ovw-legend">
+      <text class="ovw-leg-h" x="36" y="387">Body parts</text>
+      <rect x="180" y="374" width="16" height="16" rx="3" fill="#4a7fb5" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="204" y="387">Trunk</text>
+      <rect x="305" y="374" width="16" height="16" rx="3" fill="#e8943a" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="329" y="387">L arm</text>
+      <rect x="430" y="374" width="16" height="16" rx="3" fill="#b98bbd" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="454" y="387">R arm</text>
+      <rect x="555" y="374" width="16" height="16" rx="3" fill="#5eb562" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="579" y="387">L leg</text>
+      <rect x="678" y="374" width="16" height="16" rx="3" fill="#e8696b" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="702" y="387">R leg</text>
+      <text class="ovw-snow" x="828" y="388">&#10052;</text>
+      <text class="ovw-leg-t" x="850" y="387">frozen</text>
+      <rect class="ovw-key-data" x="40" y="411" width="26" height="17" rx="4"/>
+      <text class="ovw-leg-t" x="76" y="423">data</text>
+      <rect class="ovw-key-net" x="188" y="411" width="26" height="17" rx="4"/>
+      <text class="ovw-leg-t" x="224" y="423">network</text>
+      <path class="ovw-arrow" d="M330,418 L398,418" marker-end="url(#ovw-ah)"/>
+      <text class="ovw-leg-t" x="414" y="423">data flow</text>
+      <path class="ovw-arrow ovw-dash" d="M576,418 L624,418" marker-end="url(#ovw-ah)"/>
+      <text class="ovw-leg-t" x="640" y="423">training signal</text>
+      <text class="ovw-leg-h" x="36" y="459">Moving dots</text>
+      <circle class="ovw-leg-dot" cx="187" cy="455" r="5.5" fill="#e8943a"/>
+      <text class="ovw-leg-t" x="204" y="459">training path</text>
+      <circle class="ovw-leg-dot" cx="379" cy="455" r="5.5" fill="#0b6fb8"/>
+      <text class="ovw-leg-t" x="396" y="459">deploy path</text>
+      <circle class="ovw-leg-dot" cx="563" cy="455" r="5.5" fill="#4a7fb5"/>
+      <text class="ovw-leg-t" x="580" y="459">prior mean</text>
+      <circle class="ovw-leg-dot" cx="727" cy="455" r="5.5" fill="#8b93a1"/>
+      <text class="ovw-leg-t" x="744" y="459">state feedback</text>
+      <text class="ovw-leg-t ovw-leg-note" x="36" y="497">Hover any block to see what it does. Drag the robot to turn it.</text>
+    </g>
+        </svg>
+            <canvas class="ovw-robot" aria-hidden="true"></canvas>
+            <canvas class="ovw-ref" aria-hidden="true"></canvas>
+            <canvas class="ovw-cmd" aria-hidden="true"></canvas>
+            <button type="button" class="ovw-flowbtn" aria-pressed="true">
+              <span class="ovw-flowdot"></span>Animate
+            </button>
+            <div class="ovw-tip" hidden></div>
+          </div>
         </figure>
         <p class="has-text-centered is-size-6 mt-3">
           <b>Overview of the three stages.</b> Stage 1: a whole-body expert tracks reference motions
@@ -224,17 +402,135 @@
           part-wise latent prior <i>p</i>(<i>z</i>&nbsp;|&nbsp;<i>s</i>), aligned by a divergence
           term with a training-time posterior. Stage 3: the prior and decoder are frozen, and a
           body-part Transformer maps the state and the sparse five-point command to a residual.
-          Colors mark the five trunk&ndash;limb groups.
+          Colors mark the five trunk and limb groups.
         </p>
       </div>
     </div>
 
-    <div class="columns is-centered method-figure-row">
+    <div class="columns is-centered method-figure-row reveal">
       <div class="column is-four-fifths">
         <figure class="image">
-          <img src="./static/images/failuremimic_fig3_architecture.png"
-               style="max-width: 680px; width: 100%; margin: 0 auto;"
-               alt="Part-wise architecture: the sparse five-point command, proprioceptive state, and attitude signals are tokenized by body part into five tokens; a Transformer encoder mixes them by multi-head self-attention, and zero-initialized per-part heads emit a latent residual that shifts the frozen prior mean before each slice is decoded by its own branch.">
+          <div class="arch-wrap" style="max-width: 940px; margin: 0 auto;">
+        <svg class="arch-svg" viewBox="0 0 1000 690" role="img"
+             aria-label="Part-wise architecture of the residual policy">
+    <defs>
+      <marker id="arch-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0.5,1 L9,5 L0.5,9 Z" fill="context-stroke"/>
+      </marker>
+    </defs>
+    <path class="arch-bracket" d="M281,81 V72 H643 V81"/>
+    <path class="arch-bracket is-s2" d="M745,81 V72 H902 V81"/>
+    <text class="arch-stage" x="436" y="58">Stage</text>
+    <circle class="ovw-badge" cx="507" cy="52" r="14"/><text class="ovw-badge-t" x="507" y="58">3</text>
+    <text class="arch-stage is-s2" x="799" y="58">Stage</text>
+    <circle class="ovw-badge is-s2" cx="869" cy="52" r="14"/><text class="ovw-badge-t is-s2" x="869" y="58">2</text>
+    <text class="arch-cap" x="277" y="124">Body-part</text><text class="arch-cap" x="277" y="148">tokens</text>
+    <text class="arch-cap" x="441" y="124">Transformer</text><text class="arch-cap" x="424" y="148">encoder</text>
+    <text class="arch-bolt" x="516" y="149">&#9889;</text>
+    <text class="arch-cap" x="830" y="124">Part-wise</text><text class="arch-cap" x="822" y="148">decoder</text>
+    <text class="ovw-snow" x="904" y="146">&#10052;</text>
+    <rect class="arch-in-box" x="52" y="182" width="166" height="66" rx="7"/>
+    <text class="arch-in" x="135" y="210">Five-point</text><text class="arch-in" x="135" y="238">command</text>
+    <rect class="arch-in-box" x="130" y="325" width="86" height="63" rx="7"/>
+    <text class="arch-in is-italic" x="173" y="368">s</text>
+      <rect class="arch-cell" x="258" y="168.0" width="38" height="48.4" fill="#4a7fb5"/>
+      <rect class="arch-cell" x="258" y="216.4" width="38" height="48.4" fill="#e8943a"/>
+      <rect class="arch-cell" x="258" y="264.8" width="38" height="48.4" fill="#b98bbd"/>
+      <rect class="arch-cell" x="258" y="313.2" width="38" height="48.4" fill="#5eb562"/>
+      <rect class="arch-cell" x="258" y="361.6" width="38" height="48.4" fill="#e8696b"/>
+    <rect class="arch-box" x="315" y="160" width="248" height="252" rx="8"/>
+    <rect class="ovw-row" x="345" y="182" width="188" height="38" rx="6"/><text class="ovw-row-t" x="439" y="206">FFN</text>
+    <rect class="ovw-row is-hi" x="328" y="240" width="222" height="66" rx="6"/>
+    <text class="ovw-row-t is-hi" x="439" y="267">Cross-part</text><text class="ovw-row-t is-hi" x="439" y="291">attention</text>
+    <rect class="ovw-row" x="345" y="330" width="188" height="38" rx="6"/><text class="ovw-row-t" x="439" y="354">QKV</text>
+    <rect class="arch-x3" x="506" y="376" width="48" height="28" rx="5"/><text class="arch-x3-t" x="530" y="396">&#215; 3</text>
+      <rect class="arch-cell is-open" x="585" y="168.0" width="36" height="48.4" style="stroke:#4a7fb5"/>
+      <rect class="arch-cell is-open" x="585" y="216.4" width="36" height="48.4" style="stroke:#e8943a"/>
+      <rect class="arch-cell is-open" x="585" y="264.8" width="36" height="48.4" style="stroke:#b98bbd"/>
+      <rect class="arch-cell is-open" x="585" y="313.2" width="36" height="48.4" style="stroke:#5eb562"/>
+      <rect class="arch-cell is-open" x="585" y="361.6" width="36" height="48.4" style="stroke:#e8696b"/>
+    <text class="arch-sym" x="603" y="440">z</text>
+    <text class="arch-tilde" x="603" y="431">~</text>
+    <circle class="arch-plus" cx="667" cy="289" r="22"/>
+    <path class="arch-plus-p" d="M656,289 H678 M667,278 V300"/>
+      <rect class="arch-cell" x="722" y="168.0" width="36" height="48.4" fill="#4a7fb5"/>
+      <rect class="arch-cell" x="722" y="216.4" width="36" height="48.4" fill="#e8943a"/>
+      <rect class="arch-cell" x="722" y="264.8" width="36" height="48.4" fill="#b98bbd"/>
+      <rect class="arch-cell" x="722" y="313.2" width="36" height="48.4" fill="#5eb562"/>
+      <rect class="arch-cell" x="722" y="361.6" width="36" height="48.4" fill="#e8696b"/>
+    <text class="arch-sym" x="740" y="440">z</text>
+    <rect class="arch-box" x="778" y="168" width="127" height="242" rx="8"/>
+      <path class="arch-tz" d="M793,179.2 L878,171.2 L878,213.2 L793,205.2 Z" fill="#4a7fb5"/>
+      <path class="arch-tz" d="M793,227.6 L878,219.6 L878,261.6 L793,253.6 Z" fill="#e8943a"/>
+      <path class="arch-tz" d="M793,276.0 L878,268.0 L878,310.0 L793,302.0 Z" fill="#b98bbd"/>
+      <path class="arch-tz" d="M793,324.4 L878,316.4 L878,358.4 L793,350.4 Z" fill="#5eb562"/>
+      <path class="arch-tz" d="M793,372.8 L878,364.8 L878,406.8 L793,398.8 Z" fill="#e8696b"/>
+    <rect class="arch-in-box" x="930" y="262" width="56" height="56" rx="7"/>
+    <text class="arch-in is-italic" x="958" y="300">a</text>
+    <rect class="arch-box" x="538" y="467" width="259" height="65" rx="8"/>
+    <text class="ovw-snow" x="575" y="506">&#10052;</text>
+    <text class="arch-prior" x="636" y="506">Prior</text>
+    <text class="arch-prior is-italic" x="725" y="508">p(z | s)</text>
+    <text class="arch-sym is-sm" x="683" y="386">&#956;&#8346;</text>
+    <g class="arch-arrows">
+      <path class="arch-line" d="M218,215 H240"/>
+      <path class="arch-line" d="M216,356 H240"/>
+      <path class="arch-line" d="M240,192.2 V385.8"/>
+      <path class="arch-line" d="M240,192.2 H256" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M240,240.6 H256" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M240,289.0 H256" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M240,337.4 H256" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M240,385.8 H256" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#4a7fb5" d="M296,192.2 H313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#4a7fb5" d="M563,192.2 H583" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#4a7fb5" d="M758,192.2 H776" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#4a7fb5" d="M878,192.2 H916"/>
+      <path class="arch-line" style="stroke:#e8943a" d="M296,240.6 H313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8943a" d="M563,240.6 H583" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8943a" d="M758,240.6 H776" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8943a" d="M878,240.6 H916"/>
+      <path class="arch-line" style="stroke:#b98bbd" d="M296,289.0 H313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#b98bbd" d="M563,289.0 H583" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#b98bbd" d="M758,289.0 H776" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#b98bbd" d="M878,289.0 H916"/>
+      <path class="arch-line" style="stroke:#5eb562" d="M296,337.4 H313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#5eb562" d="M563,337.4 H583" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#5eb562" d="M758,337.4 H776" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#5eb562" d="M878,337.4 H916"/>
+      <path class="arch-line" style="stroke:#e8696b" d="M296,385.8 H313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8696b" d="M563,385.8 H583" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8696b" d="M758,385.8 H776" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" style="stroke:#e8696b" d="M878,385.8 H916"/>
+      <path class="arch-line" d="M621,289 H643" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M689,289 H704"/>
+      <path class="arch-line" d="M704,192.2 V385.8"/>
+      <path class="arch-line" d="M704,192.2 H720" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M704,240.6 H720" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M704,289.0 H720" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M704,337.4 H720" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M704,385.8 H720" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M667,467 V313" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M916,192.2 V385.8"/>
+      <path class="arch-line" d="M916,289 H928" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M173,388 V572 H830 V412" marker-end="url(#arch-ah)"/>
+      <path class="arch-line" d="M667,572 V534" marker-end="url(#arch-ah)"/>
+      <text class="arch-sym is-sm" x="392" y="562">s</text>
+    </g>
+    <text class="ovw-leg-h" x="52" y="616">Body parts</text>
+      <rect x="238" y="602" width="17" height="17" rx="3" fill="#4a7fb5" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="263" y="616">Trunk</text>
+      <rect x="384" y="602" width="17" height="17" rx="3" fill="#e8943a" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="409" y="616">L arm</text>
+      <rect x="530" y="602" width="17" height="17" rx="3" fill="#b98bbd" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="555" y="616">R arm</text>
+      <rect x="676" y="602" width="17" height="17" rx="3" fill="#5eb562" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="701" y="616">L leg</text>
+      <rect x="822" y="602" width="17" height="17" rx="3" fill="#e8696b" stroke="#8d96a5" stroke-width="1.2"/>
+      <text class="ovw-leg-t" x="847" y="616">R leg</text>
+    <text class="ovw-snow" x="60" y="655">&#10052;</text><text class="ovw-leg-t" x="80" y="656">frozen</text>
+    <text class="arch-bolt" x="200" y="657">&#9889;</text><text class="ovw-leg-t" x="220" y="656">trained</text>
+        </svg>
+          </div>
         </figure>
         <p class="has-text-centered is-size-6 mt-3">
           <b>Part-wise architecture.</b> The command, proprioceptive state, and attitude signals are
@@ -252,230 +548,285 @@
 <!-- End abstract. -->
 
 
-<section class="section loco-manipulation">
+<section class="section g1-section" id="joints">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered reveal">Which joints fail</h2>
+    <p class="g1-lede reveal">The G1 has 29 actuated joints, grouped into the trunk, two arms and two
+      legs, the same five-part partition the latent model is factorized over. A damped joint has
+      its stiffness set to zero: it gives no position feedback and contributes only dissipative torque.
+      A locked joint is held at its episode-start configuration. The policy is never told which joints
+      are affected.</p>
+    <p class="g1-lede g1-caveat reveal">The ringed joints below are only the ones demonstrated on this
+      page. They are not a limit of the method. Any joint can be damped or locked, and the
+      framework trains the same way for it. Hover a ringed joint to see where it appears; click to jump
+      to that clip.</p>
+
+    <div class="g1-wrap reveal">
+      <div class="g1-stage">
+        <canvas class="g1-canvas" aria-label="Interactive Unitree G1 joint model"></canvas>
+        <p class="g1-loading">Loading model&hellip;</p>
+        <p class="g1-drag">drag to rotate &middot; scroll to zoom</p>
+      </div>
+
+      <div class="g1-readout" aria-live="polite">
+        <p class="g1-hint">Hover or select a joint.</p>
+        <div class="g1-detail" hidden>
+          <p class="g1-name"></p>
+          <p class="g1-meta"></p>
+          <p class="g1-demo"></p>
+        </div>
+        <div class="g1-legend"><span class="g1-key"><i style="background:#4a7fb5"></i>Trunk</span><span class="g1-key"><i style="background:#e8943a"></i>L arm</span><span class="g1-key"><i style="background:#b98bbd"></i>R arm</span><span class="g1-key"><i style="background:#5eb562"></i>L leg</span><span class="g1-key"><i style="background:#e8696b"></i>R leg</span></div>
+        <div class="g1-states">
+          <span class="g1-key"><i class="sw-damped"></i>damped on this page</span>
+          <span class="g1-key"><i class="sw-locked"></i>locked on this page</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section loco-manipulation" id="loco">
   <div class="container is-max-desktop">
     <div class="has-text-centered">
-      <h2 class="title is-3 loco-manipulation-title">Loco-manipulation</h2>
+      <h2 class="title is-3 loco-manipulation-title reveal">Loco-manipulation</h2>
     </div>
-
-    <h3 class="title is-4 has-text-centered">Box carrying</h3>
-    <div class="columns is-multiline is-centered">
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/carry_box_synchronized_dual_view_v3.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box carrying</p>
+      <h3 class="title is-4 has-text-centered clip-group-title reveal">Box carrying</h3>
+      <div data-group-id="box-carrying" class="clip-group clip-group--film reveal">
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Nominal">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/carry_box_synchronized_dual_view_v3.jpg" data-src="./static/videos/loco-manipulation/carry_box_synchronized_dual_view_v3.mp4"></video>
+            <p class="clip-caption">Box carrying</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right wrist">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/carry_box_right_wrist_damping_dual_view.jpg" data-src="./static/videos/loco-manipulation/carry_box_right_wrist_damping_dual_view.mp4"></video>
+            <p class="clip-caption">Box carrying with right-wrist damping</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right hip roll">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/damping_carry_box_right_hip_roll_dual_view.jpg" data-src="./static/videos/loco-manipulation/damping_carry_box_right_hip_roll_dual_view.mp4"></video>
+            <p class="clip-caption">Box carrying with right hip-roll damping</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Left elbow (locked)">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/lock_push_box_left_elbow_after_turn_annotation.jpg" data-src="./static/videos/loco-manipulation/lock_push_box_left_elbow_after_turn_annotation.mp4"></video>
+            <p class="clip-caption">Box carrying with left-elbow locking</p>
+          </div>
+        </div>
+        <div class="clip-thumbs" role="tablist">
+          <button type="button" class="clip-thumb is-active" role="tab" aria-selected="true" data-clip="0">
+            <img src="./static/images/thumbs/carry_box_synchronized_dual_view_v3.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Nominal</span>
+          </button>
+          <button type="button" class="clip-thumb" role="tab" aria-selected="false" data-clip="1">
+            <img src="./static/images/thumbs/carry_box_right_wrist_damping_dual_view.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Right wrist</span>
+          </button>
+          <button type="button" class="clip-thumb" role="tab" aria-selected="false" data-clip="2">
+            <img src="./static/images/thumbs/damping_carry_box_right_hip_roll_dual_view.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Right hip roll</span>
+          </button>
+          <button type="button" class="clip-thumb" role="tab" aria-selected="false" data-clip="3">
+            <img src="./static/images/thumbs/lock_push_box_left_elbow_after_turn_annotation.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Left elbow (locked)</span>
+          </button>
         </div>
       </div>
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/carry_box_right_wrist_damping_dual_view.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box carrying with right-wrist damping</p>
+      <h3 class="title is-4 has-text-centered clip-group-title reveal">Box pushing</h3>
+      <div data-group-id="box-pushing" class="clip-group clip-group--film reveal">
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Nominal">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0040.jpg" data-src="./static/videos/loco-manipulation/C0040.mp4"></video>
+            <p class="clip-caption">Box pushing</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right ankle roll">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/damping_push_box_right_ankle_roll_final_v2.jpg" data-src="./static/videos/loco-manipulation/damping_push_box_right_ankle_roll_final_v2.mp4"></video>
+            <p class="clip-caption">Box pushing with right ankle-roll damping</p>
+          </div>
+        </div>
+        <div class="clip-thumbs" role="tablist">
+          <button type="button" class="clip-thumb is-active" role="tab" aria-selected="true" data-clip="0">
+            <img src="./static/images/thumbs/C0040.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Nominal</span>
+          </button>
+          <button type="button" class="clip-thumb" role="tab" aria-selected="false" data-clip="1">
+            <img src="./static/images/thumbs/damping_push_box_right_ankle_roll_final_v2.jpg" alt="" loading="lazy" decoding="async">
+            <span class="clip-thumb-label">Right ankle roll</span>
+          </button>
         </div>
       </div>
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/damping_carry_box_right_hip_roll_dual_view.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box carrying with right hip-roll damping</p>
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/lock_push_box_left_elbow_after_turn_annotation.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box carrying with left-elbow locking</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="title is-4 has-text-centered loco-manipulation-subsection">Box pushing</h3>
-    <div class="columns is-multiline is-centered">
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/C0040.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box pushing</p>
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/loco-manipulation/damping_push_box_right_ankle_roll_final_v2.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="has-text-centered">Box pushing with right ankle-roll damping</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
 
-<section class="section stitched-motion-tracking">
+<section class="section stitched-motion-tracking" id="stitched">
   <div class="container is-max-desktop">
-    <div class="has-text-centered">
-      <h2 class="title is-3 stitched-motion-tracking-title">Stitched motion tracking</h2>
+      <h2 class="title is-3 has-text-centered clip-group-title reveal">Stitched motion tracking</h2>
+      <div data-group-id="stitched" class="clip-group reveal">
+        <div class="clip-tabs" role="tablist">
+          <button type="button" class="clip-tab is-active" role="tab" aria-selected="true" data-clip="0">Clip 1</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="1">Clip 2</button>
+        </div>
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Clip 1">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/G1_stitched_motion_10_18_to_33.jpg" data-src="./static/videos/stitched-motion-tracking/G1_stitched_motion_10_18_to_33.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 2">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/G1_stitched_motion_17_11_to_32.jpg" data-src="./static/videos/stitched-motion-tracking/G1_stitched_motion_17_11_to_32.mp4"></video>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="section motion-tracking" id="tracking">
+  <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered clip-group-title reveal">Basic motion tracking</h2>
+      <div data-group-id="basic" class="clip-group reveal">
+        <div class="clip-tabs" role="tablist">
+          <button type="button" class="clip-tab is-active" role="tab" aria-selected="true" data-clip="0">Clip 1</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="1">Clip 2</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="2">Clip 3</button>
+        </div>
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Clip 1">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0002.jpg" data-src="./static/videos/regular-tracking/C0002.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 2">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0006.jpg" data-src="./static/videos/regular-tracking/C0006.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 3">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0009.jpg" data-src="./static/videos/regular-tracking/C0009.mp4"></video>
+          </div>
+        </div>
+      </div>
+      <h2 class="title is-3 has-text-centered clip-group-title reveal">Dance motion tracking</h2>
+      <div data-group-id="dance" class="clip-group reveal">
+        <div class="clip-tabs" role="tablist">
+          <button type="button" class="clip-tab is-active" role="tab" aria-selected="true" data-clip="0">Clip 1</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="1">Clip 2</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="2">Clip 3</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="3">Clip 4</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="4">Clip 5</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="5">Clip 6</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="6">Clip 7</button>
+        </div>
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Clip 1">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0010.jpg" data-src="./static/videos/regular-tracking/C0010.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 2">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0014.jpg" data-src="./static/videos/regular-tracking/C0014.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 3">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0015.jpg" data-src="./static/videos/regular-tracking/C0015.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 4">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0017.jpg" data-src="./static/videos/regular-tracking/C0017.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 5">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0018.jpg" data-src="./static/videos/regular-tracking/C0018.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 6">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0022.jpg" data-src="./static/videos/regular-tracking/C0022.mp4"></video>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Clip 7">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0023.jpg" data-src="./static/videos/regular-tracking/C0023.mp4"></video>
+          </div>
+        </div>
+      </div>
+      <h2 class="title is-3 has-text-centered clip-group-title reveal">Damping tracking</h2>
+      <div data-group-id="damping" class="clip-group reveal">
+        <div class="clip-tabs" role="tablist">
+          <button type="button" class="clip-tab is-active" role="tab" aria-selected="true" data-clip="0">Left ankle roll</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="1">Right hip yaw</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="2">Right ankle roll</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="3">Right ankle pitch</button>
+        </div>
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Left ankle roll">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0024.jpg" data-src="./static/videos/damping-tracking/C0024.mp4"></video>
+            <p class="clip-caption">Damping the left ankle-roll joint</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right hip yaw">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0025.jpg" data-src="./static/videos/damping-tracking/C0025.mp4"></video>
+            <p class="clip-caption">Damping the right hip-yaw joint</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right ankle roll">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0028.jpg" data-src="./static/videos/damping-tracking/C0028.mp4"></video>
+            <p class="clip-caption">Damping the right ankle-roll joint</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Right ankle pitch">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0030.jpg" data-src="./static/videos/damping-tracking/C0030.mp4"></video>
+            <p class="clip-caption">Damping the right ankle-pitch joint</p>
+          </div>
+        </div>
+      </div>
+      <h2 class="title is-3 has-text-centered clip-group-title reveal">Lock tracking</h2>
+      <div data-group-id="lock" class="clip-group reveal">
+        <div class="clip-tabs" role="tablist">
+          <button type="button" class="clip-tab is-active" role="tab" aria-selected="true" data-clip="0">Left knee</button>
+          <button type="button" class="clip-tab" role="tab" aria-selected="false" data-clip="1">Left hip roll</button>
+        </div>
+        <div class="clip-stage">
+          <div class="clip-panel is-active" role="tabpanel" aria-label="Left knee">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0034.jpg" data-src="./static/videos/lock-tracking/C0034.mp4"></video>
+            <p class="clip-caption">Locking the left knee</p>
+          </div>
+          <div class="clip-panel" role="tabpanel" aria-label="Left hip roll">
+            <video controls muted loop playsinline preload="none" poster="./static/images/thumbs/C0037.jpg" data-src="./static/videos/lock-tracking/C0037.mp4"></video>
+            <p class="clip-caption">Locking the left hip-roll joint</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="section results-section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered reveal">Results</h2>
+    <p class="g1-lede reveal">Each policy is trained and evaluated at the same impairment severity,
+      then pushed. The part-structured residual holds up as the compensation demanded of it grows:
+      against the unfactorized baseline its advantage widens from 6.0 points at one impaired joint to
+      30.6 at three.</p>
+
+    <div class="viz-root reveal">
+      <div class="chart-head">
+        <div>
+          <p class="chart-title">Fall-free survival under push</p>
+          <p class="chart-sub">71 motions &middot; 4096 trials per cell</p>
+        </div>
+        <div class="sev-toggle" role="group" aria-label="Impairment severity">
+          <button type="button" class="sev-btn" data-sev="0">1 joint</button>
+          <button type="button" class="sev-btn is-active" data-sev="1">2 joints</button>
+          <button type="button" class="sev-btn" data-sev="2">3 joints</button>
+        </div>
+      </div>
+      <div class="chart-wrap"><svg class="chart-line" role="img"
+           aria-label="Fall-free survival versus push magnitude"></svg></div>
+      <div class="chart-legend" aria-hidden="true"></div>
+
+      <details class="chart-table">
+        <summary>View the data</summary>
+        <div class="table-scroll"><table class="dtable"></table></div>
+      </details>
     </div>
 
-    <div class="columns is-multiline is-centered">
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/stitched-motion-tracking/G1_stitched_motion_10_18_to_33.mp4"
-                    type="video/mp4">
-          </video>
+    <div class="viz-root reveal" style="margin-top:3rem">
+      <div class="chart-head">
+        <div>
+          <p class="chart-title">Tracking novel upper/lower-body combinations</p>
+          <p class="chart-sub">500 stitched references never seen in training</p>
         </div>
       </div>
-      <div class="column is-half">
-        <div class="demo-video-card">
-          <video autoplay controls muted loop playsinline>
-            <source src="./static/videos/stitched-motion-tracking/G1_stitched_motion_17_11_to_32.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
+      <div class="chart-wrap bars"><svg class="chart-bar" role="img"
+           aria-label="Survival on novel motion combinations"></svg></div>
     </div>
   </div>
 </section>
 
 
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h3 class="title is-4 has-text-centered regular-tracking-subtitle">Basic motion tracking</h3>
-      <div class="regular-tracking-row regular-tracking-row-primary">
-        <div class="item">
-          <video id="regular-tracking-c0002" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0002.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0006" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0006.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0009" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0009.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <h3 class="title is-4 has-text-centered regular-tracking-subtitle regular-tracking-secondary-title">Dance motion tracking</h3>
-      <div id="results-carousel" class="carousel results-carousel regular-tracking-secondary-carousel">
-        <div class="item">
-          <video id="regular-tracking-c0010" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0010.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0014" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0014.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0015" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0015.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0017" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0017.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0018" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0018.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0022" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0022.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item">
-          <video id="regular-tracking-c0023" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/regular-tracking/C0023.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <h3 class="title is-4 has-text-centered regular-tracking-subtitle tracking-section-title">Damping Tracking</h3>
-      <div class="regular-tracking-row damping-tracking-row">
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/damping-tracking/C0024.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">damping left ankle roll joint</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/damping-tracking/C0025.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">damping right hip yaw joint</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/damping-tracking/C0028.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">damping right ankle roll joint</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/damping-tracking/C0030.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">damping right ankle pitch joint</p>
-        </div>
-      </div>
-
-      <h3 class="title is-4 has-text-centered regular-tracking-subtitle tracking-section-title">Lock Tracking</h3>
-      <div class="regular-tracking-row lock-tracking-row">
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/lock-tracking/C0034.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">lock left knee</p>
-        </div>
-        <div class="item">
-          <video autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/lock-tracking/C0037.mp4"
-                    type="video/mp4">
-          </video>
-          <p class="tracking-video-caption has-text-centered">lock left hip roll joint</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
+<section class="section" id="bibtex">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{ji2027failuremimic,
@@ -495,6 +846,13 @@
         <div class="content has-text-centered">
           <p>
             Page template borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+          </p>
+          <p class="footer-credit">
+            The interactive robot uses the Unitree G1 model from
+            <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a>.
+            Copyright &copy; 2016&ndash;2023 HangZhou YuShu TECHNOLOGY CO., LTD.
+            (&ldquo;Unitree Robotics&rdquo;), all rights reserved; redistributed under the
+            <a href="https://github.com/google-deepmind/mujoco_menagerie/blob/main/unitree_g1/LICENSE">BSD&nbsp;3-Clause License</a>.
           </p>
         </div>
       </div>
