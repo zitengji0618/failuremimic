@@ -76,13 +76,13 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=43">
+  <link rel="stylesheet" href="./static/css/index.css?v=44">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js?v=17"></script>
+  <script src="./static/js/index.js?v=18"></script>
   <script defer src="./static/js/charts.js?v=2"></script>
   <script type="importmap">
   {"imports":{
@@ -90,6 +90,12 @@
     "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
   </script>
   <script type="module" src="./static/js/g1.js?v=16"></script>
+<script>
+    try {
+      if (localStorage.getItem('fm-theme') === 'dark')
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -105,6 +111,15 @@
       <a href="#results">Results</a>
       <a href="#bibtex">BibTeX</a>
     </div>
+    <button type="button" class="theme-btn" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-ico is-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.4"/>
+        <path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/>
+      </svg>
+      <svg class="theme-ico is-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8z"/>
+      </svg>
+    </button>
   </div>
 </nav>
 

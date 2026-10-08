@@ -432,17 +432,14 @@ body {
   --nav-h: 56px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #101216;
+:root[data-theme="dark"] { --bg: #101216;
     --bg-alt: #161920;
     --fg: #e9ecf1;
     --muted: #9aa3b2;
     --line: #262b34;
     --accent: #5aa9e0;
-    --accent-soft: #16222c;
-  }
-}
+    --accent-soft: #16222c; }
+
 
 html { scroll-padding-top: calc(var(--nav-h) + 12px); }
 
@@ -784,10 +781,9 @@ body {
 .g1-badge.damped { background: #fdf0d0; color: #8a6100; }
 .g1-badge.locked { background: #e6e8ec; color: #2b2f36; }
 
-@media (prefers-color-scheme: dark) {
-  .g1-badge.damped { background: #3a2f12; color: #f3c75a; }
-  .g1-badge.locked { background: #272b33; color: #d7dce4; }
-}
+:root[data-theme="dark"] .g1-badge.damped { background: #3a2f12; color: #f3c75a; }
+:root[data-theme="dark"] .g1-badge.locked { background: #272b33; color: #d7dce4; }
+
 
 .g1-legend, .g1-states {
   display: flex;
@@ -896,9 +892,8 @@ body {
   position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --grid: #272c35; }
-}
+:root[data-theme="dark"] .viz-root { --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --grid: #272c35; }
+
 
 
 
@@ -1062,12 +1057,11 @@ body {
   pointer-events: none; box-shadow: 0 8px 22px rgba(16,19,24,.22);
 }
 
-@media (prefers-color-scheme: dark) {
-  .ovw-block rect, .ovw-plus circle { stroke: #5c6674; }
-  .ovw-row { fill: #1c2027; stroke: #333b46; }
-  .ovw-row.is-hi { fill: #22303f; stroke: #3d5569; }
-  .ovw-arrow { stroke: #6f7886; }
-}
+:root[data-theme="dark"] .ovw-block rect, :root[data-theme="dark"] .ovw-plus circle { stroke: #5c6674; }
+:root[data-theme="dark"] .ovw-row { fill: #1c2027; stroke: #333b46; }
+:root[data-theme="dark"] .ovw-row.is-hi { fill: #22303f; stroke: #3d5569; }
+:root[data-theme="dark"] .ovw-arrow { stroke: #6f7886; }
+
 
 @media screen and (max-width: 720px) {
   .ovw-label, .ovw-row-t, .ovw-leg-t { font-size: 15px; }
@@ -1089,20 +1083,20 @@ body {
 .ovw-curve-t.is-p { fill: #3f4855; }
 .ovw-axis  { stroke: #d3d9e2; stroke-width: 1.4; }
 
-@media (prefers-color-scheme: dark) {
-  .ovw-fig { stroke: #78828f; }
-  circle.ovw-fig { fill: #78828f; }
-  .ovw-node { fill: #8993a2; }
-  .ovw-edge { stroke: #333b46; }
-  .ovw-card { fill: #171b21; stroke: #343c47; }
-  .ovw-curve.is-p { stroke: #c7cedb; }
-  .ovw-curve-t.is-p { fill: #c7cedb; }
-  .ovw-axis { stroke: #333b46; }
-}
+:root[data-theme="dark"] .ovw-fig { stroke: #78828f; }
+:root[data-theme="dark"] circle.ovw-fig { fill: #78828f; }
+:root[data-theme="dark"] .ovw-node { fill: #8993a2; }
+:root[data-theme="dark"] .ovw-edge { stroke: #333b46; }
+:root[data-theme="dark"] .ovw-card { fill: #171b21; stroke: #343c47; }
+:root[data-theme="dark"] .ovw-curve.is-p { stroke: #c7cedb; }
+:root[data-theme="dark"] .ovw-curve-t.is-p { fill: #c7cedb; }
+:root[data-theme="dark"] .ovw-axis { stroke: #333b46; }
+
 
 /* Arrowheads take the stroke colour of their path where supported. */
 #ovw-ah path { fill: #7a8292; fill: context-stroke; }
-@media (prefers-color-scheme: dark) { #ovw-ah path { fill: #6f7886; fill: context-stroke; } }
+:root[data-theme="dark"] #ovw-ah path { fill: #6f7886; fill: context-stroke; }
+
 
 /* G1 renders sitting inside the Reference-motions and Five-point-command boxes */
 .ovw-ref, .ovw-cmd { position: absolute; pointer-events: none; }
@@ -1113,10 +1107,9 @@ body {
 .ovw-key-net  { fill: var(--bg);     stroke: #7a8292; stroke-width: 1.8; }
 .ovw-leg-t    { font-weight: 700; }
 .ovw-leg-note { font-weight: 400; }
-@media (prefers-color-scheme: dark) {
-  .ovw-key-data { fill: #1c2027; stroke: #343c47; }
-  .ovw-key-net  { fill: #12151a; stroke: #5c6674; }
-}
+:root[data-theme="dark"] .ovw-key-data { fill: #1c2027; stroke: #343c47; }
+:root[data-theme="dark"] .ovw-key-net { fill: #12151a; stroke: #5c6674; }
+
 
 /* Control for the flow animation */
 .ovw-flowbtn {
@@ -1178,19 +1171,63 @@ body {
 
 .arch-line { fill: none; stroke: #6b7483; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
-@media (prefers-color-scheme: dark) {
-  .arch-bracket { stroke: #8b94a1; }
-  .arch-in-box { fill: #1c2027; stroke: #343c47; }
-  .arch-box, .arch-x3 { stroke: #6f7886; }
-  .arch-x3 { fill: #12151a; }
-  .arch-plus { fill: #12151a; stroke: #c7cedb; }
-  .arch-plus-p { stroke: #c7cedb; }
-  .arch-line { stroke: #6f7886; }
-}
+:root[data-theme="dark"] .arch-bracket { stroke: #8b94a1; }
+:root[data-theme="dark"] .arch-in-box { fill: #1c2027; stroke: #343c47; }
+:root[data-theme="dark"] .arch-box, :root[data-theme="dark"] .arch-x3 { stroke: #6f7886; }
+:root[data-theme="dark"] .arch-x3 { fill: #12151a; }
+:root[data-theme="dark"] .arch-plus { fill: #12151a; stroke: #c7cedb; }
+:root[data-theme="dark"] .arch-plus-p { stroke: #c7cedb; }
+:root[data-theme="dark"] .arch-line { stroke: #6f7886; }
+
 
 #arch-ah path { fill: #6b7483; fill: context-stroke; }
-@media (prefers-color-scheme: dark) { #arch-ah path { fill: #6f7886; fill: context-stroke; } }
+:root[data-theme="dark"] #arch-ah path { fill: #6f7886; fill: context-stroke; }
+
 .arch-sym  { fill: var(--fg); font-size: 23px; font-style: italic; text-anchor: middle;
              font-family: inherit; }
 .arch-sym.is-sm { font-size: 19px; }
 .arch-tilde { fill: var(--fg); font-size: 19px; text-anchor: middle; font-family: inherit; }
+
+
+/* ---------------------------------------------------------------------------
+   Theme toggle. Light is the default; dark applies only when the visitor asks
+   for it, which is why nothing here keys off prefers-color-scheme.
+   --------------------------------------------------------------------------- */
+.theme-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-left: .9rem;
+  padding: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.theme-btn:hover { color: var(--fg); border-color: var(--accent); transform: translateY(-1px); }
+.theme-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-ico {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-ico.is-moon { display: none; fill: currentColor; stroke: none; }
+:root[data-theme="dark"] .theme-ico.is-sun  { display: none; }
+:root[data-theme="dark"] .theme-ico.is-moon { display: inline; }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-btn { transition: none; }
+  .theme-btn:hover { transform: none; }
+}

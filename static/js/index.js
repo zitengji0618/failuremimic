@@ -276,6 +276,28 @@
     stacks.forEach(function (s) { ob.observe(s); });
   }
 
+  // Theme toggle. Light unless the visitor picks dark; the choice is remembered.
+  function startTheme() {
+    var btn = document.querySelector('.theme-btn');
+    if (!btn) return;
+    var root = document.documentElement;
+
+    function paint() {
+      var dark = root.getAttribute('data-theme') === 'dark';
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    paint();
+
+    btn.addEventListener('click', function () {
+      var dark = root.getAttribute('data-theme') === 'dark';
+      if (dark) root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', 'dark');
+      try { localStorage.setItem('fm-theme', dark ? 'light' : 'dark'); } catch (e) {}
+      paint();
+    });
+  }
+
   function init() {
     // The carousel runs first: it may move or clone its slides, and the clip
     // observers must see the nodes that actually end up in the page.
@@ -285,6 +307,7 @@
       });
     }
     if (window.bulmaSlider) bulmaSlider.attach();
+    startTheme();
     startNav();
     startFigFlow();
     startOverview();
